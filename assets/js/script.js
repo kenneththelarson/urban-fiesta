@@ -62,7 +62,3 @@ function getInstructions(data) {
     drinkInstructions.appendChild(drinkInstructionsText)
     document.body.appendChild(drinkInstructions)
 }
-
-
-
-
