@@ -10,10 +10,17 @@
 
     <div id="drinkName" class="">
         <h1> Generate a Random Cocktail </h1>
-        <button onclick="getDrinkRecipe()">Search!</button>
+        <div>
+            <input type="text" name="search-input" id="search-input">
+            <button id="" class="" onclick="drinkSearch()">Search!</button>
+        </div>
+        <div>
+            <button onclick="getDrinkRecipe()" class="">Genereate Random Drink</button>
+        </div>
         <h2>Drink Name:</h2>
         <div id="drink-title"></div>
-        <div id="ingredients">
+        <div>
+            <ol id="ingredients"></ol>
         </div>
         <div id=""></div>
     </div>

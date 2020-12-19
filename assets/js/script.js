@@ -1,3 +1,4 @@
+// ***** START - GET RANDOM DRINK *****
 var ingredientListEl = document.querySelector("#ingredients");
 var drinkNameEl = document.querySelector("#drink-title");
 
@@ -12,6 +13,7 @@ function getDrinkRecipe() {
             getIngredients(data);
             getMeasure(data);
             getInstructions(data);
+            console.log(data)
         })
 }
 
@@ -62,3 +64,26 @@ function getInstructions(data) {
     drinkInstructions.appendChild(drinkInstructionsText)
     document.body.appendChild(drinkInstructions)
 }
+// ***** END - GET RANDOM DRINK *****
+
+
+
+// ***** START - SEARCH FOR DRINK *****
+function drinkSearch() {
+    // When search is clicked
+    var inputElement = document.getElementById('search-input')
+    var searchTerm = inputElement.value;
+    // Calling fetch 
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + searchTerm)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            getDrinkName(data);
+            getIngredients(data);
+            getMeasure(data);
+            getInstructions(data);
+        });
+}
+// ***** END - SEARCH FOR DRINK *****
+
