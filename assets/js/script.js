@@ -1,6 +1,8 @@
 // ***** START - GET RANDOM DRINK *****
 var ingredientListEl = document.querySelector("#ingredients");
 var drinkNameEl = document.querySelector("#drink-title");
+var drinkMeasureEl = document.querySelector("#measure");
+var drinkInstructionsEl = document.querySelector("#instructions")
 
 function getDrinkRecipe() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
@@ -13,7 +15,6 @@ function getDrinkRecipe() {
             getIngredients(data);
             getMeasure(data);
             getInstructions(data);
-            console.log(data)
         })
 }
 
@@ -21,7 +22,7 @@ function getDrinkName(data) {
     var drinks = data.drinks[0].strDrink;
     // console.log(drinks)
     var drinkNameDiv = document.createElement('div');
-    drinkNameDiv.classList.add('drink-name')
+    drinkNameDiv.classList.add('drink-name', 'container')
     var drinkNameText = document.createTextNode(drinks);
     drinkNameDiv.appendChild(drinkNameText);
     drinkNameEl.appendChild(drinkNameDiv);
@@ -50,7 +51,7 @@ function getMeasure(data) {
             drinkMeasureDiv.classList.add('drink-measure')
             var drinkMeasureText = document.createTextNode(data.drinks[0][`strMeasure${i}`]);
             drinkMeasureDiv.appendChild(drinkMeasureText);
-            document.body.appendChild(drinkMeasureDiv);
+            drinkMeasureEl.appendChild(drinkMeasureDiv);
         }
     }
 }
@@ -62,11 +63,9 @@ function getInstructions(data) {
     drinkInstructions.classList.add('drink-instructions')
     var drinkInstructionsText = document.createTextNode(instructions)
     drinkInstructions.appendChild(drinkInstructionsText)
-    document.body.appendChild(drinkInstructions)
+    drinkInstructionsEl.appendChild(drinkInstructions)
 }
 // ***** END - GET RANDOM DRINK *****
-
-
 
 // ***** START - SEARCH FOR DRINK *****
 function drinkSearch() {
@@ -86,4 +85,3 @@ function drinkSearch() {
         });
 }
 // ***** END - SEARCH FOR DRINK *****
-
