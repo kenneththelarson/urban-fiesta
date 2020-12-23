@@ -1,6 +1,7 @@
 // ***** START - GET RANDOM DRINK *****
 var ingredientListEl = document.querySelector("#ingredients");
 var drinkNameEl = document.querySelector("#drink-title");
+var memeApiKey = "69edc030178cafce27582b13c4f32c";
 
 function getDrinkRecipe() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
@@ -13,7 +14,7 @@ function getDrinkRecipe() {
             getIngredients(data);
             getMeasure(data);
             getInstructions(data);
-            console.log(data)
+            //console.log(data)
         })
 }
 
@@ -31,12 +32,12 @@ function getIngredients(data) {
     for (i = 1; i <= 15; i++) {
 
         if (data.drinks[0][`strIngredient${i}`]) {
-        // console.log(data.drinks[0][`strIngredient${i}`])
-        var drinkIngredientDiv = document.createElement('li');
-        drinkIngredientDiv.classList.add('drink-ingredients')
-        var drinkIngredientText = document.createTextNode(data.drinks[0][`strIngredient${i}`]);
-        drinkIngredientDiv.appendChild(drinkIngredientText);
-        ingredientListEl.appendChild(drinkIngredientDiv);
+            // console.log(data.drinks[0][`strIngredient${i}`])
+            var drinkIngredientDiv = document.createElement('li');
+            drinkIngredientDiv.classList.add('drink-ingredients')
+            var drinkIngredientText = document.createTextNode(data.drinks[0][`strIngredient${i}`]);
+            drinkIngredientDiv.appendChild(drinkIngredientText);
+            ingredientListEl.appendChild(drinkIngredientDiv);
         }
     }
 }
@@ -87,3 +88,26 @@ function drinkSearch() {
 }
 // ***** END - SEARCH FOR DRINK *****
 
+// start random meme generator
+
+var memeEl = document.querySelector("#meme-main");
+
+function getMemes() {
+    fetch('https://meme-api.herokuapp.com/gimme')
+    .then(function (response) {
+        return response.json();
+    })
+        .then(function (data) {
+            createMeme(data);
+        })
+};
+
+function createMeme(data) {
+    var meme = data.preview[3];
+    var memeImg = document.createElement("img");
+    memeImg.setAttribute("src", meme);
+    memeEl.appendChild(memeImg);
+
+}
+
+getMemes();
