@@ -3,10 +3,6 @@ var ingredientListEl = document.querySelector("#ingredients");
 var drinkNameEl = document.querySelector("#drink-title");
 var drinkMeasureEl = document.querySelector("#measure");
 var drinkInstructionsEl = document.querySelector("#instructions")
-<<<<<<< HEAD
-
-=======
->>>>>>> 54a3d9159ac53098a6f3b0c14621d3b4b69ca02f
 
 function getDrinkRecipe() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
@@ -91,14 +87,6 @@ function drinkSearch() {
 }
 // ***** END - SEARCH FOR DRINK *****
 
-<<<<<<< HEAD
-
-function clearSearch() {
-    drinkNameEl.removeChild()
-}
-
-=======
->>>>>>> 54a3d9159ac53098a6f3b0c14621d3b4b69ca02f
 // start random meme generator
 
 var memeEl = document.querySelector("#meme-main");
@@ -122,13 +110,6 @@ function createMeme(data) {
 }
 
 getMemes();
-<<<<<<< HEAD
-
 function clearSearch() {
     drinkNameEl.removeChild()
 }
-=======
-function clearSearch() {
-    drinkNameEl.removeChild()
-}
->>>>>>> 54a3d9159ac53098a6f3b0c14621d3b4b69ca02f
