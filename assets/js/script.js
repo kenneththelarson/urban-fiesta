@@ -87,6 +87,11 @@ function drinkSearch() {
 }
 // ***** END - SEARCH FOR DRINK *****
 
+
+function clearSearch() {
+    drinkNameEl.removeChild()
+}
+
 // start random meme generator
 
 var memeEl = document.querySelector("#meme-main");
@@ -110,6 +115,8 @@ function createMeme(data) {
 }
 
 getMemes();
+
 function clearSearch() {
     drinkNameEl.removeChild()
 }
+
