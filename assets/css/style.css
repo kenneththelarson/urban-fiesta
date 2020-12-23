@@ -1,3 +1,52 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Gotham Rounded;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+}
+
+h1 {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding-bottom: 12px;
+    background-color: rgb(0, 241, 241);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+li {
+    list-style-position: inside;
+}
+
+ul, ol {
+    padding-left: 0px;
+}
+
+#card-el {
+    box-shadow: 0 0 10px 2px;
+}
+
+.card {
+    text-align: center;
+    outline: black;
+    list-style-position: inside;
+    width: 100%;
+    font-size: 24px;
+    border-radius: 12px;
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: rgb(199, 199, 199);
+}
+
 .drink-name {
     font-size: 24px;
     padding-bottom: 20px;
@@ -6,15 +55,19 @@
 
 .drink-instructions {
     font-size: 24px;
-
 }
 
 .drink-ingredients {
     font-size: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 
 .drink-measure {
     font-size: 20px;
     padding-bottom: 20px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
