@@ -83,5 +83,10 @@ function drinkSearch() {
             getMeasure(data);
             getInstructions(data);
         });
+
 }
 // ***** END - SEARCH FOR DRINK *****
+
+function clearSearch() {
+    drinkNameEl.removeChild()
+}
