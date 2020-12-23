@@ -83,8 +83,14 @@ function drinkSearch() {
             getMeasure(data);
             getInstructions(data);
         });
+
 }
 // ***** END - SEARCH FOR DRINK *****
+
+
+function clearSearch() {
+    drinkNameEl.removeChild()
+}
 
 // start random meme generator
 
@@ -109,4 +115,8 @@ function createMeme(data) {
 }
 
 getMemes();
-1
+
+function clearSearch() {
+    drinkNameEl.removeChild()
+}
+
