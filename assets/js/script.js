@@ -1,8 +1,13 @@
 // ***** START - GET RANDOM DRINK *****
 var ingredientListEl = document.querySelector("#ingredients");
+var ingredientListName = document.querySelector("#ingredient-name")
 var drinkNameEl = document.querySelector("#drink-title");
 var drinkMeasureEl = document.querySelector("#measure");
 var drinkInstructionsEl = document.querySelector("#instructions")
+var clearSearchEl = document.querySelector("#clear-search")
+var drinkNameH2El = document.querySelector("#drink-name")
+var measureListName = document.querySelector("#measure-name")
+var instructionListName = document.querySelector("#instruction-name")
 
 function getDrinkRecipe() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
@@ -15,17 +20,31 @@ function getDrinkRecipe() {
             getIngredients(data);
             getMeasure(data);
             getInstructions(data);
+            ingredientName();
+            MeasureName();
+            instructionsName();
         })
 }
 
 function getDrinkName(data) {
     var drinks = data.drinks[0].strDrink;
     // console.log(drinks)
+    var drinkNameH2 = document.createElement('h3');
+    var drinkNameH2Text = document.createTextNode("Drink Name:")
     var drinkNameDiv = document.createElement('div');
     drinkNameDiv.classList.add('drink-name', 'container')
     var drinkNameText = document.createTextNode(drinks);
+    drinkNameH2.appendChild(drinkNameH2Text);
+    drinkNameH2El.appendChild(drinkNameH2)
     drinkNameDiv.appendChild(drinkNameText);
     drinkNameEl.appendChild(drinkNameDiv);
+}
+
+function ingredientName() {
+    var drinkIngredientName = document.createElement('h3');
+    var drinkIngredientTextName = document.createTextNode("Ingredients:");
+    drinkIngredientName.appendChild(drinkIngredientTextName);
+    ingredientListName.appendChild(drinkIngredientName);
 }
 
 function getIngredients(data) {
@@ -33,13 +52,22 @@ function getIngredients(data) {
 
         if (data.drinks[0][`strIngredient${i}`]) {
             // console.log(data.drinks[0][`strIngredient${i}`])
+
             var drinkIngredientDiv = document.createElement('li');
-            drinkIngredientDiv.classList.add('drink-ingredients')
+            drinkIngredientDiv.classList.add('drink-ingredients');
             var drinkIngredientText = document.createTextNode(data.drinks[0][`strIngredient${i}`]);
+
             drinkIngredientDiv.appendChild(drinkIngredientText);
             ingredientListEl.appendChild(drinkIngredientDiv);
         }
     }
+}
+
+function MeasureName() {
+    var drinkMeasureName = document.createElement('h3');
+    var drinkMeasureTextName = document.createTextNode("Measurements:");
+    drinkMeasureName.appendChild(drinkMeasureTextName);
+    measureListName.appendChild(drinkMeasureName);
 }
 
 function getMeasure(data) {
@@ -49,11 +77,18 @@ function getMeasure(data) {
             // console.log(data.drinks[0][`strMeasure${i}`])
             var drinkMeasureDiv = document.createElement('li');
             drinkMeasureDiv.classList.add('drink-measure')
-            var drinkMeasureText = document.createTextNode(data.drinks[0][`strMeasure${i}`]);
+            var drinkMeasureText = document.createTextNode(data.drinks[0][`strMeasure${i}`] );
             drinkMeasureDiv.appendChild(drinkMeasureText);
             drinkMeasureEl.appendChild(drinkMeasureDiv);
         }
     }
+}
+
+function instructionsName() {
+    var drinkInstructionName = document.createElement('h3');
+    var drinkInstructionTextName = document.createTextNode("Instructions:");
+    drinkInstructionName.appendChild(drinkInstructionTextName);
+    instructionListName.appendChild(drinkInstructionName);
 }
 
 function getInstructions(data) {
@@ -89,7 +124,7 @@ function drinkSearch() {
 
 
 function clearSearch() {
-    drinkNameEl.removeChild()
+    clearSearchEl.removeChild(data)
 }
 
 // start random meme generator
@@ -119,4 +154,3 @@ getMemes();
 function clearSearch() {
     drinkNameEl.removeChild()
 }
-
