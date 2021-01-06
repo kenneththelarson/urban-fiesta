@@ -149,8 +149,6 @@ function createMeme(data) {
 
 }
 
-getMemes();
-
 function clearSearch() {
     drinkNameEl.removeChild()
 }
