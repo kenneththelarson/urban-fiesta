@@ -14,12 +14,13 @@
     align-items: center;
 } 
 
+
+
 header {
     padding: 20px 35px;
     background-color: #190B28;
     display: flex;
     flex-wrap: wrap;
-    position: sticky;
     top: 0;
     background-size: cover;
     background-position: center;
@@ -39,13 +40,14 @@ header {
   }
 
   .hero {
-    background-image: url("../images/drink.jpg");
+    background-image: url("../images/Whiskey_Ice.jpg");
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
   }
   
 
@@ -73,14 +75,14 @@ ul, ol {
     text-align: center;
     outline: black;
     list-style-position: inside;
-    width: 100%;
+    max-height: fit-content;
     font-size: 24px;
     font-style: serif, garamond;
     border-radius: 12px;
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-top: 200;
     background-color: #F1DAC4;
     opacity: .95;
+    padding: 10px 10px;
 }
 
 
@@ -114,13 +116,7 @@ footer {
     background-color: #190B28;
     display: flex;
     flex-wrap: wrap;
-    position: sticky;
-    top: 0;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-position: 80%;
-    z-index: 9999;
+    
   }
 
 
@@ -131,4 +127,17 @@ footer {
       margin: 0;
       justify-content: space-between;
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
+
+  @media screen and (max-width: 575px) {
+      header h1 {
+          font-size: 30px;
+      }
+
+
+      footer h1 {
+          font-size: 30px;
+      }
   }
