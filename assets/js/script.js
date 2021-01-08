@@ -142,7 +142,7 @@ function getMemes() {
 };
 
 function createMeme(data) {
-    var meme = data.preview[2.5];
+    var meme = data.preview[2];
     var memeImg = document.createElement("img");
     memeImg.setAttribute("src", meme);
     memeEl.appendChild(memeImg);
