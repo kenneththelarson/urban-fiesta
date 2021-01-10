@@ -1,9 +1,9 @@
 // ***** START - GET RANDOM DRINK *****
-var ingredientListEl = document.querySelector("#ingredients");
+var ingredientListEl = document.querySelector("#ingredients-list");
 var ingredientListName = document.querySelector("#ingredient-name")
 var drinkNameEl = document.querySelector("#drink-title");
-var drinkMeasureEl = document.querySelector("#measure");
-var drinkInstructionsEl = document.querySelector("#instructions")
+var drinkMeasureEl = document.querySelector("#measure-list");
+var drinkInstructionsEl = document.querySelector("#instructions-list")
 var clearSearchEl = document.querySelector("#clear-search")
 var drinkNameH2El = document.querySelector("#drink-name")
 var measureListName = document.querySelector("#measure-name")
@@ -16,6 +16,7 @@ function getDrinkRecipe() {
             return response.json();
         })
         .then(function (data) {
+            getDrinkTitle()
             getDrinkName(data);
             getIngredients(data);
             getMeasure(data);
@@ -26,18 +27,33 @@ function getDrinkRecipe() {
         })
 }
 
+function getDrinkTitle(){
+
+    
+    var drinkNameH2 = document.createElement('h3');
+    var drinkNameH2Text = document.createTextNode("Drink Name:")
+    drinkNameH2.appendChild(drinkNameH2Text);
+    drinkNameH2El.appendChild(drinkNameH2)
+
+    var itemTwo = document.getElementById("drink-name");
+    itemTwo.replaceChild(drinkNameH2, itemTwo.childNodes[0]);
+
+}
+
 function getDrinkName(data) {
     var drinks = data.drinks[0].strDrink;
     // console.log(drinks)
-    var drinkNameH2 = document.createElement('h3');
-    var drinkNameH2Text = document.createTextNode("Drink Name:")
-    var drinkNameDiv = document.createElement('div');
+
+    var drinkNameDiv = document.createElement('p');
     drinkNameDiv.classList.add('drink-name', 'container')
     var drinkNameText = document.createTextNode(drinks);
-    drinkNameH2.appendChild(drinkNameH2Text);
-    drinkNameH2El.appendChild(drinkNameH2)
+
     drinkNameDiv.appendChild(drinkNameText);
     drinkNameEl.appendChild(drinkNameDiv);
+
+    var item = document.getElementById("drink-title");
+    item.replaceChild(drinkNameDiv, item.childNodes[0]);
+
 }
 
 function ingredientName() {
@@ -45,20 +61,44 @@ function ingredientName() {
     var drinkIngredientTextName = document.createTextNode("Ingredients:");
     drinkIngredientName.appendChild(drinkIngredientTextName);
     ingredientListName.appendChild(drinkIngredientName);
+
+    var item = document.getElementById("ingredient-name");
+    item.replaceChild(drinkIngredientName, item.childNodes[0]);
 }
 
+// function getIngredients(data) {
+//     for (i = 1; i <= 15; i++) {
+
+//         if (data.drinks[0][`strIngredient${i}`]) {
+//             // console.log(data.drinks[0][`strIngredient${i}`])
+
+//             var drinkIngredientDiv = document.createElement('li');
+//             console.log(drinkIngredientDiv)
+//             drinkIngredientDiv.classList.add('drink-ingredients');
+//             var drinkIngredientText = document.createTextNode(data.drinks[0][`strIngredient${i}`]);
+
+//             drinkIngredientDiv.appendChild(drinkIngredientText);
+//             ingredientListEl.appendChild(drinkIngredientDiv);
+
+//             var item = document.getElementById("ingredients-list");
+//             item.replaceChild(drinkIngredientDiv, item.childNodes[0]);
+//         }
+//     }
+// }
+
 function getIngredients(data) {
-    for (i = 1; i <= 15; i++) {
+    const list = document.getElementById("ingredients-list");
+    list.childNodes.forEach((n) => n.remove());
+    const drink = data.drinks[0];
 
-        if (data.drinks[0][`strIngredient${i}`]) {
-            // console.log(data.drinks[0][`strIngredient${i}`])
-
-            var drinkIngredientDiv = document.createElement('li');
+    for (let i = 1; i <= 15; i++) {
+        if (drink[`strIngredient${i}`]) {
+            const drinkIngredientDiv = document.createElement("li");
             drinkIngredientDiv.classList.add('drink-ingredients');
-            var drinkIngredientText = document.createTextNode(data.drinks[0][`strIngredient${i}`]);
-
+            const drinkIngredientText = document.createTextNode(drink[`strIngredient${i}`]);
             drinkIngredientDiv.appendChild(drinkIngredientText);
             ingredientListEl.appendChild(drinkIngredientDiv);
+            console.log(`strIngredients${i}`)
         }
     }
 }
@@ -68,18 +108,40 @@ function MeasureName() {
     var drinkMeasureTextName = document.createTextNode("Measurements:");
     drinkMeasureName.appendChild(drinkMeasureTextName);
     measureListName.appendChild(drinkMeasureName);
+
+    var item = document.getElementById("measure-name");
+    item.replaceChild(drinkMeasureName, item.childNodes[0]);
 }
 
-function getMeasure(data) {
-    for (i = 1; i <= 15; i++) {
+// function getMeasure(data) {
+//     for (i = 1; i <= 15; i++) {
 
-        if (data.drinks[0][`strMeasure${i}`]) {
-            // console.log(data.drinks[0][`strMeasure${i}`])
-            var drinkMeasureDiv = document.createElement('li');
-            drinkMeasureDiv.classList.add('drink-measure')
-            var drinkMeasureText = document.createTextNode(data.drinks[0][`strMeasure${i}`] );
+//         if (data.drinks[0][`strMeasure${i}`]) {
+//             // console.log(data.drinks[0][`strMeasure${i}`])
+//             var drinkMeasureDiv = document.createElement('li');
+//             drinkMeasureDiv.classList.add('drink-measure')
+//             var drinkMeasureText = document.createTextNode(data.drinks[0][`strMeasure${i}`] );
+//             drinkMeasureDiv.appendChild(drinkMeasureText);
+//             drinkMeasureEl.appendChild(drinkMeasureDiv);
+
+//             var item = document.getElementById("measure-list");
+//             item.replaceChild(drinkMeasureDiv, item.childNodes[0]);
+//         }
+//     }
+// }
+
+function getMeasure(data) {
+    const list = document.getElementById("measure-list");
+    list.childNodes.forEach((n) => n.remove());
+    const drink = data.drinks[0];
+
+    for (let i = 1; i <= 15; i++) {
+        if (drink[`strMeasure${i}`]) {
+            const drinkMeasureDiv = document.createElement("li");
+            drinkMeasureDiv.classList.add("drink-measure");
+            const drinkMeasureText = document.createTextNode(drink[`strMeasure${i}`]);
             drinkMeasureDiv.appendChild(drinkMeasureText);
-            drinkMeasureEl.appendChild(drinkMeasureDiv);
+            drinkMeasureEl.appendChild(drinkMeasureDiv)
         }
     }
 }
@@ -89,6 +151,9 @@ function instructionsName() {
     var drinkInstructionTextName = document.createTextNode("Instructions:");
     drinkInstructionName.appendChild(drinkInstructionTextName);
     instructionListName.appendChild(drinkInstructionName);
+
+    var item = document.getElementById("instruction-name");
+    item.replaceChild(drinkInstructionName, item.childNodes[0]);
 }
 
 function getInstructions(data) {
@@ -99,6 +164,9 @@ function getInstructions(data) {
     var drinkInstructionsText = document.createTextNode(instructions)
     drinkInstructions.appendChild(drinkInstructionsText)
     drinkInstructionsEl.appendChild(drinkInstructions)
+
+    var item = document.getElementById("instructions-list");
+    item.replaceChild(drinkInstructions, item.childNodes[0]);
 }
 // ***** END - GET RANDOM DRINK *****
 
@@ -117,15 +185,14 @@ function drinkSearch() {
             getIngredients(data);
             getMeasure(data);
             getInstructions(data);
+            getDrinkTitle()
+            ingredientName();
+            MeasureName();
+            instructionsName();
         });
 
 }
 // ***** END - SEARCH FOR DRINK *****
-
-
-function clearSearch() {
-    clearSearchEl.removeChild(data)
-}
 
 // start random meme generator
 
@@ -147,8 +214,7 @@ function createMeme(data) {
     memeImg.setAttribute("src", meme);
     memeEl.appendChild(memeImg);
 
-}
+    var item = document.getElementById("meme-random");
+    item.replaceChild(memeImg, item.childNodes[0]);
 
-function clearSearch() {
-    drinkNameEl.removeChild()
 }
