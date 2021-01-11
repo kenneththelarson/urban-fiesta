@@ -27,6 +27,7 @@ function getDrinkRecipe() {
         })
 }
 
+// Creating drink name call 
 function getDrinkTitle(){
 
     
@@ -42,8 +43,6 @@ function getDrinkTitle(){
 
 function getDrinkName(data) {
     var drinks = data.drinks[0].strDrink;
-    // console.log(drinks)
-
     var drinkNameDiv = document.createElement('p');
     drinkNameDiv.classList.add('drink-name', 'container')
     var drinkNameText = document.createTextNode(drinks);
@@ -56,6 +55,7 @@ function getDrinkName(data) {
 
 }
 
+// Creating drink ingredient call 
 function ingredientName() {
     var drinkIngredientName = document.createElement('h3');
     var drinkIngredientTextName = document.createTextNode("Ingredients:");
@@ -66,25 +66,6 @@ function ingredientName() {
     item.replaceChild(drinkIngredientName, item.childNodes[0]);
 }
 
-// function getIngredients(data) {
-//     for (i = 1; i <= 15; i++) {
-
-//         if (data.drinks[0][`strIngredient${i}`]) {
-//             // console.log(data.drinks[0][`strIngredient${i}`])
-
-//             var drinkIngredientDiv = document.createElement('li');
-//             console.log(drinkIngredientDiv)
-//             drinkIngredientDiv.classList.add('drink-ingredients');
-//             var drinkIngredientText = document.createTextNode(data.drinks[0][`strIngredient${i}`]);
-
-//             drinkIngredientDiv.appendChild(drinkIngredientText);
-//             ingredientListEl.appendChild(drinkIngredientDiv);
-
-//             var item = document.getElementById("ingredients-list");
-//             item.replaceChild(drinkIngredientDiv, item.childNodes[0]);
-//         }
-//     }
-// }
 
 function getIngredients(data) {
     const list = document.getElementById("ingredients-list");
@@ -98,11 +79,11 @@ function getIngredients(data) {
             const drinkIngredientText = document.createTextNode(drink[`strIngredient${i}`]);
             drinkIngredientDiv.appendChild(drinkIngredientText);
             ingredientListEl.appendChild(drinkIngredientDiv);
-            console.log(`strIngredients${i}`)
         }
     }
 }
 
+// Creating measurements call 
 function MeasureName() {
     var drinkMeasureName = document.createElement('h3');
     var drinkMeasureTextName = document.createTextNode("Measurements:");
@@ -112,23 +93,6 @@ function MeasureName() {
     var item = document.getElementById("measure-name");
     item.replaceChild(drinkMeasureName, item.childNodes[0]);
 }
-
-// function getMeasure(data) {
-//     for (i = 1; i <= 15; i++) {
-
-//         if (data.drinks[0][`strMeasure${i}`]) {
-//             // console.log(data.drinks[0][`strMeasure${i}`])
-//             var drinkMeasureDiv = document.createElement('li');
-//             drinkMeasureDiv.classList.add('drink-measure')
-//             var drinkMeasureText = document.createTextNode(data.drinks[0][`strMeasure${i}`] );
-//             drinkMeasureDiv.appendChild(drinkMeasureText);
-//             drinkMeasureEl.appendChild(drinkMeasureDiv);
-
-//             var item = document.getElementById("measure-list");
-//             item.replaceChild(drinkMeasureDiv, item.childNodes[0]);
-//         }
-//     }
-// }
 
 function getMeasure(data) {
     const list = document.getElementById("measure-list");
@@ -146,6 +110,7 @@ function getMeasure(data) {
     }
 }
 
+// Creating drink instructions call 
 function instructionsName() {
     var drinkInstructionName = document.createElement('h3');
     var drinkInstructionTextName = document.createTextNode("Instructions:");
@@ -158,7 +123,6 @@ function instructionsName() {
 
 function getInstructions(data) {
     var instructions = data.drinks[0].strInstructions;
-    // console.log(instructions)
     var drinkInstructions = document.createElement('div')
     drinkInstructions.classList.add('drink-instructions')
     var drinkInstructionsText = document.createTextNode(instructions)

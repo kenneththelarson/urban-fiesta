@@ -18,45 +18,41 @@
         
     </header>
 
-    <div>
-    <div class="row hero grid" id="clear-search">
-    <div class="card five columns" id="card-el">
-    <div id="" class="">
-        <h1> Search for a Cocktail </h1>
-        <div>
-        <div>
-            <input type="text" name="search-input" id="search-input">
-            <button id="" class="search" type="reset" onclick="drinkSearch(), getMemes()">Search!</button>
-        </div>
-        <div>
-            <button class="search" onclick="getDrinkRecipe(), getMemes()">Find Something Random</button>
-        </div>
-        <div>
-        <h3 id="drink-name"></h3>
-        <p id="drink-title"></p>
-        </div>
-        <div>
-            <h3 id="ingredient-name"></h3>
-            <ol id="ingredients-list"></ol>
-        </div>
-        <div>
-            <h3 id="measure-name"></h3>
-            <ul id="measure-list"></ul>
-        </div>
-        <div>
-            <h3 id="instruction-name"></h3>
-            <p id="instructions-list"></p>
-        </div>
-        </div>
-    </div>
 
-    <div>
-    <div id="meme-random">
-        <div id="meme-main"></div>
+    <div class="row hero grid" id="clear-search">
+        <div class="card five columns" id="card-el">
+            <h1> Search for a Cocktail </h1>
+            <!--Creating buttons with onclick functions-->
+            <div>
+                <input type="text" name="search-input" id="search-input">
+                <button id="" class="search" type="reset" onclick="drinkSearch(), getMemes()">Search!</button>
+            </div>
+            <div>
+                <button class="search" onclick="getDrinkRecipe(), getMemes()">Find Something Random</button>
+            </div>
+            <!--This is where all the data will display pulled from the api-->
+            <div>
+                <h3 id="drink-name"></h3>
+                <p id="drink-title"></p>
+            </div>
+            <div>
+                <h3 id="ingredient-name"></h3>
+                <ol id="ingredients-list"></ol>
+            </div>
+            <div>
+                <h3 id="measure-name"></h3>
+                <ul id="measure-list"></ul>
+            </div>
+            <div>
+                <h3 id="instruction-name"></h3>
+                <p id="instructions-list"></p>
+            </div>
+            <!--Meme Genorator-->
+            <div id="meme-random">
+                <div id="meme-main"></div>
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
-</div>
 
 <footer>
     <h1>Party On</h1>
